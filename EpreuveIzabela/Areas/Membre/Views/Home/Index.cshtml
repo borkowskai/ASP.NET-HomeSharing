@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @*n'ajoute pas non plus bootstrap'
+        @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/bootstrap")*@
+}
+
+<div class="container">
+    <div class="row  pt-3">
+        <h2 class="text-center">@ViewBag.Welcome</h2>
+    </div>
+    <div class="row">
+
+        <div class="col-4">
+
+            <!-- Content Row -->
+            <div class="row">
+                Member
+                <div class="row">
+                    <!-- Vu que dans le Controlleur Home Area, on passe SeesionsUtils
+                et sessions utils return ProfileModel, on peut acceder directement-->
+                    Last Name : @Model.Nom
+                </div>
+                <div class="row">
+                    First Name : @Model.Prenom
+                </div>
+                <div class=row">
+                    Login : @Model.Login
+                </div>
+                <div class="row">
+                    Email : @Model.Email
+                </div>
+                @*<div class="row">
+
+                    <figure  >
+                            <img src="@Model.Photo" />
+                    </figure>
+                </div>*@
+            </div>
+        </div>
+        <div class="col-8">
+            <button class="btn btn-info" onclick="window.location.href='Bien/DisplayProperties'">DisplayMyProperties</button>
+            <button class="btn btn-info" onclick="window.location.href='Bien/AddProperties'">AddMyProperties</button>
+            @*<a href="Bien/DisplayProperties">display</a>*@
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

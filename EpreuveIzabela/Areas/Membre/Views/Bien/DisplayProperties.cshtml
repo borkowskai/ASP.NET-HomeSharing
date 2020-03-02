@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EpreuveIzabela.Areas.Membre.Models.BienModel>
+@{
+    ViewBag.Title = "DisplayProperties";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DisplayProperties</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionCourte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacité)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (EpreuveIzabela.Areas.Membre.Models.BienModel item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionCourte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacité)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdBien}) | @*/* id=item.PrimaryKey */*@
+                @Html.ActionLink("Details", "Details", new { id = item.IdBien }) | @*/* id=item.PrimaryKey */*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdBien }) @*/* id=item.PrimaryKey */*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+

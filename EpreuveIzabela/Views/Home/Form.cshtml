@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EpreuveIzabela.Models.PaysModel>
+@{
+    ViewBag.Title = "Form";
+}
+<!-- banner -->
+<div class="inside-banner">
+    <div class="container">
+        <span class="pull-right"><a href="#">Home</a> / Register</span>
+        <h2>Register</h2>
+    </div>
+</div>
+<!-- banner -->
+
+
+<div class="container">
+    <div class="spacer">
+        <div class="row register">
+            <form action="~/Register/Register" method="POST" enctype="multipart/form-data" class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
+                @Html.AntiForgeryToken()
+
+                <input type="text" required class="form-control" placeholder="Last Name" name="Nom">
+                <input type="text" required class="form-control" placeholder="First Name" name="Prenom">
+                <input type="text" required class="form-control" placeholder="Login" name="Login">
+                <input type="email" required class="form-control" placeholder="Enter Email" name="Email">
+                <input type="password" required class="form-control" placeholder="Password" name="Password">
+                <input type="password" required class="form-control" placeholder="Confirm Password" name="ConfirmPassword">
+                <!-- <input type="text"required class="form-control" placeholder="Country" name="Pays"> -->
+                <input type="text" required class="form-control" placeholder="Enter Phone" name="Telephone">
+                <input type="file" class="form-control" placeholder="Your Photo" name="PhotoUser">
+                <label class="form-control">Choose your country</label>
+                <select class="form-control" name="Pays">
+                    <option disabled selected value> -- select an option -- </option>
+                    @* I je pouvais le faire par la liste dans le membreappeler getAll de Pays *@
+                    @foreach (EpreuveIzabela.Models.PaysModel item in Model)
+                    {
+                        <option value="@item.IdPays" @*name="@item.IdPays"*@>@item.Libelle</option>
+                    }
+                </select>
+
+                <button type="submit" class="btn btn-success" name="Submit">Register</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
