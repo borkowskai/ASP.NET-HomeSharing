@@ -1,4 +1,5 @@
-﻿using EpreuveIzabela.DAL.Models;
+﻿using EpreuveIzabela.DAL.Infra;
+using EpreuveIzabela.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace EpreuveIzabela.DAL.Repositories
 {
-    public class OptionBienRepository : BaseRepository<OptionBien, int>
+    public class OptionBienRepository : BaseRepository<OptionBien, CompositeKey<int, int>>
     {
         public OptionBienRepository(string Cnstr) : base(Cnstr)
         {
             //TODO treat the double primary key
 
             //majuscule ou miniscule dans les requetes pas vraiment importance pour SQL 
-            SelectOneCommand = "SELECT * FROM OptionBien WHERE ?=@?;";
+            SelectOneCommand = "SELECT * FROM OptionBien WHERE idOption=@idOption AND idBien=@idBien;";
             SelectAllCommand = "SELECT * FROM OptionBien;";
             //@ pour permettre ecrire dans plusieurs lignes sans concatenation automatique
             // OUTPUT inserted.idMembre equivalant de last id en PHP
-            InsertCommand = @"INSERT INTO  OptionBien (Libelle ,Valeur)
-                            OUTPUT inserted.? VALUES(@Libelle ,@Valeur;";
+            InsertCommand = @"INSERT INTO  OptionBien (idOption, idBien, Valeur)
+                         VALUES(@idOption, @idBien, @Valeur);";
             UpdateCommand = @"UPDATE  OptionBien
-                           SET Libelle=@Libelle , Valeur=@Valeur
-                         WHERE ? = @?;";
-            DeleteCommand = @"DELETE FROM OptionBien  WHERE ? = @?;";
+                           SET idOption=@idOption, idBien=@idBien, Valeur=@Valeur
+                         WHERE idOption=@idOption AND idBien=@idBien ;";
+            DeleteCommand = @"DELETE FROM OptionBien  WHERE idOption=@idOption AND idBien=@idBien;";
         }
 
 
@@ -36,10 +37,11 @@ namespace EpreuveIzabela.DAL.Repositories
             return base.getAll(Map);
         }
 
-        public override OptionBien GetOne(int id)
+        public override OptionBien GetOne(CompositeKey<int, int> id)
         {
             Dictionary<string, object> QueryParameters = new Dictionary<string, object>();
-            QueryParameters.Add("?", id);
+            QueryParameters.Add("IdOption", id.PK1);
+            QueryParameters.Add("IdBien", id.PK2);
             return base.getOne(Map, QueryParameters);
         }
 
@@ -61,10 +63,11 @@ namespace EpreuveIzabela.DAL.Repositories
 
         }
 
-        public override bool Delete(int id)
+        public override bool Delete(CompositeKey<int, int> id)
         {
             Dictionary<string, object> QueryParameters = new Dictionary<string, object>();
-            QueryParameters.Add("@?", id);
+            QueryParameters.Add("IdOption", id.PK1);
+            QueryParameters.Add("IdBien", id.PK2);
             return base.Delete(QueryParameters);
 
         }

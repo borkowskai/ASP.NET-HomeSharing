@@ -1,4 +1,5 @@
-﻿using EpreuveIzabela.DAL.Interface;
+﻿using EpreuveIzabela.DAL.Infra;
+using EpreuveIzabela.DAL.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace EpreuveIzabela.DAL.Models
 {
-    public partial class OptionBien : IEntity<int>
+    public partial class OptionBien : IEntity<CompositeKey<int, int>>
     {
         private int _idOption;
         private int idBien;
-        private string _Valeur;
+        private string _valeur;
 
         public int IdOption
         {
@@ -43,21 +44,23 @@ namespace EpreuveIzabela.DAL.Models
         {
             get
             {
-                return _Valeur;
+                return _valeur;
             }
 
             set
             {
-                _Valeur = value;
+                _valeur = value;
             }
         }
 
-        public int Id
+        //cette partie pour une classe intermediare est obligatoire
+        // dans le struct int on ne peut pas mettre 2 valeurs 
+        // nous avons besoin de 2 id  de 2 tab => il faut creer un struct de 2 elements = ici CompositeKey de Infra
+        public CompositeKey<int, int> Id
         {
             get
             {
-                //TODO double int
-                throw new NotImplementedException();
+                return new CompositeKey<int, int>() { PK1 = IdBien, PK2 = IdOption };
             }
         }
     }
