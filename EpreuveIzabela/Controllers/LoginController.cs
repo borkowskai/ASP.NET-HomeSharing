@@ -34,6 +34,7 @@ namespace EpreuveIzabela.Controllers
             {
                 return RedirectToAction("Index", new { controller = "Home", area = "Membre" });
             }
+            //TODO add ViewBag.ErrorMessage  + html
             return RedirectToAction("Index", new { controller = "Home", area = "" });
         }
 

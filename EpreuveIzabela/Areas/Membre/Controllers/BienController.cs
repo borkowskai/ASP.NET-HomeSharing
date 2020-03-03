@@ -1,6 +1,7 @@
 ﻿using EpreuveIzabela.Areas.Membre.Models;
 using EpreuveIzabela.DAL.Repositories;
 using EpreuveIzabela.Tools;
+using EpreuveIzabela.Models;
 using EpreuveIzabela.Tools.Mappers;
 using System;
 using System.Collections.Generic;
@@ -26,8 +27,14 @@ namespace EpreuveIzabela.Areas.Membre.Controllers
         }
         public ActionResult AddProperties() 
         {
-            return View();
-        
+            PaysRepository mr = new PaysRepository(ConfigurationManager.ConnectionStrings["CnstrDev"].ConnectionString);
+
+            //select comme for
+            //ici je retraduit le mapper de maptoDBModel a la requeque que j'ai fait
+            List<PaysModel> ListePays = mr.GetCountries().Select(c => MapToDBModel.PaysToPaysModel(c)).ToList();
+
+            
+
         }
     }
 }

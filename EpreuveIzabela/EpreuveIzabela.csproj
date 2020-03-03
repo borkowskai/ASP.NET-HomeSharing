@@ -123,6 +123,7 @@
     <Compile Include="Areas\Membre\Controllers\BienController.cs" />
     <Compile Include="Areas\Membre\Controllers\HomeController.cs" />
     <Compile Include="Areas\Membre\MembreAreaRegistration.cs" />
+    <Compile Include="Areas\Membre\Models\AddPropertiesModel.cs" />
     <Compile Include="Areas\Membre\Models\BienModel.cs" />
     <Compile Include="Areas\Membre\Models\ProfileModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
