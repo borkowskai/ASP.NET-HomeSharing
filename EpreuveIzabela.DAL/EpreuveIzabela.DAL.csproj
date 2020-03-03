@@ -44,6 +44,8 @@
     <Compile Include="Infra\CompositeKey.cs" />
     <Compile Include="Interface\IEntity.cs" />
     <Compile Include="Interface\IRepository.cs" />
+    <Compile Include="Models\Avis.cs" />
+    <Compile Include="Models\AvisMembreBien.cs" />
     <Compile Include="Models\Bien.cs" />
     <Compile Include="Models\BienEchange.cs" />
     <Compile Include="Models\Membre.cs" />
@@ -51,6 +53,8 @@
     <Compile Include="Models\OptionBien.cs" />
     <Compile Include="Models\Pays.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AvisMembreBienRepository.cs" />
+    <Compile Include="Repositories\AvisRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\BienEchangeRepository.cs" />
     <Compile Include="Repositories\BienRepository.cs" />
