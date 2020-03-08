@@ -27,14 +27,25 @@ namespace EpreuveIzabela.Areas.Membre.Controllers
         }
         public ActionResult AddProperties() 
         {
+            
             PaysRepository mr = new PaysRepository(ConfigurationManager.ConnectionStrings["CnstrDev"].ConnectionString);
-
             //select comme for
             //ici je retraduit le mapper de maptoDBModel a la requeque que j'ai fait
-            List<PaysModel> ListePays = mr.GetCountries().Select(c => MapToDBModel.PaysToPaysModel(c)).ToList();
+            List<PaysModel> ListePays = mr.GetCountries().Select(item => MapToDBModel.PaysToPaysModel(item)).ToList();
 
+            OptionRepository or = new OptionRepository(ConfigurationManager.ConnectionStrings["CnstrDev"].ConnectionString);
+            List<OptionModel> ListeOptions = or.GetAll().Select(item=>MapToDBModel.OptionToOptionModel(item)).ToList();
+            
+            
+            return View();
             
 
+        }
+
+        //TODO prepare
+        public ActionResult BienRegister() 
+        {
+            return null;
         }
     }
 }

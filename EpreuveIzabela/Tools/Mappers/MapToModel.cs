@@ -80,6 +80,15 @@ namespace EpreuveIzabela.Tools.Mappers
             };
         }
 
+        public static OptionModel OptionToOptionModel(Option om) 
+        {
+            return new OptionModel()
+            {
+                IdOption = om.IdOption,
+                Libelle = om.Libelle
+            };
+        }
+
 
 
     }

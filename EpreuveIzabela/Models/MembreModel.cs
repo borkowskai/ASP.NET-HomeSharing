@@ -6,7 +6,7 @@ using System.Web;
 
 namespace EpreuveIzabela.Models
 {
-    public class MemberModel
+    public class MembreModel
     {
         private int _idMembre;
         private string _nom;

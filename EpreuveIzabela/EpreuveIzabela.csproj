@@ -123,8 +123,8 @@
     <Compile Include="Areas\Membre\Controllers\BienController.cs" />
     <Compile Include="Areas\Membre\Controllers\HomeController.cs" />
     <Compile Include="Areas\Membre\MembreAreaRegistration.cs" />
-    <Compile Include="Areas\Membre\Models\AddPropertiesModel.cs" />
     <Compile Include="Areas\Membre\Models\BienModel.cs" />
+    <Compile Include="Areas\Membre\Models\OptionModel.cs" />
     <Compile Include="Areas\Membre\Models\ProfileModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -133,7 +133,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Models\MembreModel.cs" />
     <Compile Include="Models\PaysModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
